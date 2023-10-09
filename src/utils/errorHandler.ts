@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { NextFunction, Response } from "express";
 /**
  * Custom error class for structured error responses in Express applications.
@@ -57,6 +59,7 @@ export function ErrorHandlerMiddleware(
   err: any,
   req: any,
   res: Response,
+  //   eslint-disable-next-line @typescript-eslint/no-unused-vars
   next: NextFunction,
 ): void {
   const errorData = err.data || err;

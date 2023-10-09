@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request } from "express";
 import { ErrorResponse } from "./errorHandler";
 /**
  * Middleware for handling route not found errors.
@@ -7,7 +7,7 @@ import { ErrorResponse } from "./errorHandler";
  * @param {Response} res - The Express response object.
  * @throws {ErrorResponse} - Throws an ErrorResponse with a "Route not found" message.
  */
-export function RouteNotFoundMiddleware(req: Request, res: Response) {
+export function RouteNotFoundMiddleware(req: Request) {
   const message = {
     error: `Route: ${req.originalUrl} not found.`,
   };
