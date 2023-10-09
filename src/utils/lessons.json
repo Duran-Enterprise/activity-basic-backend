@@ -1,0 +1,22 @@
+[
+    {
+        "name": "HTTP Requests",
+        "content": "This lesson covers the fundamentals of HTTP requests in web development."
+    },
+    {
+        "name": "Routes",
+        "content": "In this lesson, you'll learn about defining routes in your Express.js application."
+    },
+    {
+        "name": "API",
+        "content": "The API lesson explores building and interacting with APIs in backend development."
+    },
+    {
+        "name": "Express",
+        "content": "Learn the basics of Express.js, a popular Node.js web framework, in this lesson."
+    },
+    {
+        "name": "Middlewares",
+        "content": "This lesson delves into the concept of middlewares and how they enhance Express.js applications."
+    }
+]
