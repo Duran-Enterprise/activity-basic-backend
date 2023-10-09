@@ -11,6 +11,52 @@ deep.get("/:lessonName", (req, res) => {
     const lesson = lessons.find(
         (lesson) => lesson.name.toLowerCase() === lessonName.toLowerCase()
     );
+    const style = `
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    li {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    strong {
+        color: #007acc;
+        font-size: 16px;
+    }
+    
+    p {
+        margin-top: 10px;
+    }
+    
+    details {
+        margin-left: 20px;
+        padding: 10px;
+        background-color: #e0e0e0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    summary {
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    ul ul {
+        list-style: disc;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+    
+    li ul li {
+        list-style: disc;
+        margin-left: 20px;
+    }`;
     const footer = `<footer>
     <a href="https://github.com/Duran-Enterprise"><picture>
 <source
@@ -33,7 +79,8 @@ media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
           <title>${name} - DEEP Learning</title>
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
           <link rel="icon" type="image/png" href="./assets/sm-circle.png">
-        </head>
+            <style>${style}</style>
+          </head>
         <body>
           <h1>${name} - DEEP Learning</h1>
           ${content}
