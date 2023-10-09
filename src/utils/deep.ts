@@ -14,20 +14,20 @@ deep.get("/:lessonName", (req, res) => {
     const style = `
     ul {
         list-style: none;
-        padding: 0;
+        padding: 10px;
     }
     
     li {
         margin: 20px 0;
         padding: 15px;
-        background-color: #f0f0f0;
+        background-color: #f0f0f008;
         border: 1px solid #ccc;
         border-radius: 5px;
     }
     
     strong {
         color: #007acc;
-        font-size: 16px;
+        font-size: 18px;
     }
     
     p {
@@ -37,7 +37,7 @@ deep.get("/:lessonName", (req, res) => {
     details {
         margin-left: 20px;
         padding: 10px;
-        background-color: #e0e0e0;
+        background-color: #e0e0e008;
         border: 1px solid #ccc;
         border-radius: 5px;
     }
