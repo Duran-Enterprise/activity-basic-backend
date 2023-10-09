@@ -12,6 +12,11 @@ deep.get("/:lessonName", (req, res) => {
         (lesson) => lesson.name.toLowerCase() === lessonName.toLowerCase()
     );
     const style = `
+    body{
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 10px
+    }
     ul {
         list-style: none;
         padding: 10px;
