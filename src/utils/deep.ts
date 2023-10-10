@@ -1,17 +1,25 @@
+// DO NOT CHANGE any of the codes on this file
 import express, { Router } from "express";
-import { welcome } from ".";
+import { ErrorHandlerMiddleware, RouteNotFoundMiddleware, welcome } from ".";
 import lessons from "./lessons.json";
+import app from "..";
 
 export const deep = Router();
+
+setTimeout(() => {
+    app.use("/deep", deep);
+    app.use(RouteNotFoundMiddleware);
+    app.use(ErrorHandlerMiddleware);
+}, 0);
 deep.use(express.static("public"));
 deep.get("/", welcome);
 deep.get("/:lessonName", (req, res) => {
-  const { lessonName } = req.params;
+    const { lessonName } = req.params;
 
-  const lesson = lessons.find(
-    (lesson) => lesson.route.toLowerCase() === lessonName.toLowerCase(),
-  );
-  const style = `
+    const lesson = lessons.find(
+        (lesson) => lesson.route.toLowerCase() === lessonName.toLowerCase()
+    );
+    const style = `
     body{
         max-width: 800px;
         margin: 0 auto;
@@ -62,7 +70,7 @@ deep.get("/:lessonName", (req, res) => {
         list-style: disc;
         margin-left: 20px;
     }`;
-  const footer = `<footer>
+    const footer = `<footer>
     <a href="https://github.com/Duran-Enterprise"><picture>
 <source
 srcset="./assets/m-dark-full.png"
@@ -75,9 +83,9 @@ media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
 <img src="./assets/m-dark-full.png" width="107px" height="60px" alt="DEEP logo" title="DEEP - Duran Enterprise"/>
 </picture></a> in partnership with <a href="https://github.com/daedalus-developers">Daedalus</a></footer>`;
 
-  if (lesson) {
-    const { name, content } = lesson;
-    const html = `
+    if (lesson) {
+        const { name, content } = lesson;
+        const html = `
       <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -87,6 +95,14 @@ media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
             <style>${style}</style>
           </head>
         <body>
+          <nav>  
+          ${lessons
+              .map(
+                  (lesson) =>
+                      `<li style="all: unset" ><a href="/deep/${lesson.route}">${lesson.name}</a></li>`
+              )
+              .join("")}
+              </nav>
           <h1>${name} - DEEP Learning</h1>
           ${content}
           ${footer}
@@ -94,9 +110,9 @@ media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
       </html>
     `;
 
-    res.send(html);
-  } else {
-    const html = `
+        res.send(html);
+    } else {
+        const html = `
       <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -114,6 +130,6 @@ media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
         </body>
       </html>
     `;
-    res.status(404).send(html);
-  }
+        res.status(404).send(html);
+    }
 });
